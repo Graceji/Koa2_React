@@ -6,6 +6,7 @@ const bodyparser = require('koa-bodyparser');
 const session = require('koa-session-minimal');
 const MySqlStore = require('koa-mysql-session');
 const config = require('./config/default');
+const routers = require('./src/server/router/index');
 
 const app = new Koa();
 
@@ -22,6 +23,11 @@ app.use(views(__dirname + './src/server/views', {
 
 // 设置bodyparser
 app.use(bodyparser());
+
+// 设置路由
+app.use(routers.routes());
+app.use(routers.allowedMethods());
+
 
 app.listen(config.port, () => {
   console.log(`服务器监听在${config.port}端口`)
