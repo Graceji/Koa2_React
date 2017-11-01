@@ -14,10 +14,10 @@ const app = new Koa();
 app.use(logger());
 
 // 配置静态文件夹
-app.use(serve(__dirname + './src/client'));
+app.use(serve(__dirname + '/src/client'));
 
 // 设置渲染引擎
-app.use(views(__dirname + './src/server/views', {
+app.use(views(__dirname + '/src/server/views', {
   extension: 'ejs'
 }));
 
